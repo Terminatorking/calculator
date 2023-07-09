@@ -1,16 +1,7 @@
 # calculator
 
-A new Flutter project.
+یک برنامه ماشین حساب با فلاتر
 
-## Getting Started
+a calculator flutter app
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![1](https://github.com/Terminatorking/calculator/assets/107791627/7ab79e3f-22f2-4586-a198-36a1adb8ef59) ![2](https://github.com/Terminatorking/calculator/assets/107791627/b6c8b84e-c23e-402a-85e3-2ad241a5d20a)
