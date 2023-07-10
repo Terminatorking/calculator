@@ -1,5 +1,6 @@
 import 'package:calculator/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,7 +13,7 @@ class _HomePageState extends State<HomePage> {
   bool isDark = false;
   String input = "";
   String result = "0";
-
+  String input2 = "";
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -139,8 +140,10 @@ class _HomePageState extends State<HomePage> {
                 () {
                   if (text1 != "AC") {
                     input = input + text1;
+                    input2 = input2 + text1;
                   } else {
                     input = "";
+                    input2 = "";
                     result = "0";
                   }
                 },
@@ -181,9 +184,11 @@ class _HomePageState extends State<HomePage> {
                 () {
                   if (text2 != "CE") {
                     input += text2;
+                    input2 += text2;
                   } else {
                     if (input.isNotEmpty) {
                       input = input.substring(0, input.length - 1);
+                      input2 = input2.substring(0, input2.length - 1);
                     }
                   }
                 },
@@ -223,7 +228,7 @@ class _HomePageState extends State<HomePage> {
               setState(
                 () {
                   input += text3;
-                  if (text3 == "%") {}
+                  input2 += text3;
                 },
               );
             },
@@ -257,7 +262,35 @@ class _HomePageState extends State<HomePage> {
           width: 75,
           height: 75,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(
+                () {
+                  if (text4 != "=") {
+                    input = input + text4;
+                    if (text4 == "÷") {
+                      input2 = "$input2/";
+                    } else if (text4 == "×") {
+                      input2 = "$input2*";
+                    } else {
+                      input2 = input2 + text4;
+                    }
+                  }
+
+                  print(input2);
+                  if (text4 == "=") {
+                    Parser parser = Parser();
+                    Expression expression = parser.parse(input2);
+                    ContextModel contextModel = ContextModel();
+                    double eval = expression.evaluate(
+                      EvaluationType.REAL,
+                      contextModel,
+                    );
+
+                    result = eval.toString();
+                  }
+                },
+              );
+            },
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(0),
               shape: MaterialStateProperty.all(
