@@ -135,16 +135,16 @@ class _HomePageState extends State<HomePage> {
           height: 75,
           child: ElevatedButton(
             onPressed: () {
-              // setState(
-              //   () {
-              //     if (text1 != "AC") {
-              //       input = input + text1;
-              //     } else {
-              //       input = "";
-              //       result = "0";
-              //     }
-              //   },
-              // );
+              setState(
+                () {
+                  if (text1 != "AC") {
+                    input = input + text1;
+                  } else {
+                    input = "";
+                    result = "0";
+                  }
+                },
+              );
             },
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(0),
@@ -177,13 +177,17 @@ class _HomePageState extends State<HomePage> {
           width: 75,
           child: ElevatedButton(
             onPressed: () {
-              // setState(
-              //   () {
-              //     if (text2 != "CE") {
-              //       input += text2;
-              //     }
-              //   },
-              // );
+              setState(
+                () {
+                  if (text2 != "CE") {
+                    input += text2;
+                  } else {
+                    if (input.isNotEmpty) {
+                      input = input.substring(0, input.length - 1);
+                    }
+                  }
+                },
+              );
             },
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(0),
@@ -215,7 +219,14 @@ class _HomePageState extends State<HomePage> {
           width: 75,
           height: 75,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(
+                () {
+                  input += text3;
+                  if (text3 == "%") {}
+                },
+              );
+            },
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(0),
               shape: MaterialStateProperty.all(
